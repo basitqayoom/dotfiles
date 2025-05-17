@@ -1,0 +1,34 @@
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    LogLevel ERROR
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    Compression yes
+    ControlMaster auto  
+
+# Mac
+Host mac
+    HostName 100.98.241.126
+    User basitqayoomchowdhary
+
+# Windows
+Host windows
+    HostName 100.85.225.35
+    User basit
+
+# Azure VM
+Host azure-vm
+    HostName 172.179.237.192
+    User azure-vm-linux
+    IdentityFile ~/.ssh/azure-azure.pem
+    IdentitiesOnly yes
+
+# Ubuntu
+Host ubuntu
+    HostName 100.88.117.48
+    User ubuntu
+    Port 2200

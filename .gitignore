@@ -1,0 +1,17 @@
+# Ignore SSH private keys but not ssh/config
+ssh/id_*
+ssh/*.pem
+ssh/*.pub
+
+# Ignore caches and system files
+.cache/
+.DS_Store
+.Trash/
+.zcompdump*
+.zsh_history
+.zhistory
+.viminfo
+.lesshst
+
+# Ignore iterm2 sockets (if you don't want these)
+config/.config/iterm2/sockets/
