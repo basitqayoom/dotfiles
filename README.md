@@ -13,89 +13,118 @@ This repository contains my personal dotfiles managed using [GNU Stow](https://w
 
 ---
 
----
+## 🆕 Adding Files to Dotfiles for the First Time
 
-## 💻 Setting Up on a New Machine
+To start tracking your configuration files with this dotfiles repo:
 
-To set up your environment on a new system:
+1. **Create a Directory for Each App**
 
-### 1. Install Git and Stow
+    For each tool (e.g., zsh, git), create a directory inside your dotfiles repo:
 
-```bash
-# Debian/Ubuntu
-sudo apt update
-sudo apt install git stow
+    ```bash
+    mkdir -p ~/dotfiles/zsh
+    mkdir -p ~/dotfiles/git
+    mkdir -p ~/dotfiles/tmux
+    mkdir -p ~/dotfiles/nvim/.config/nvim
+    ```
 
-# macOS
-brew install git stow
-```
+2. **Move Your Existing Config Files**
 
-### 2. Clone the Repository
+    Move your config files into the corresponding directories. For example:
 
-```bash
-git clone git@github.com:yourusername/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-```
+    ```bash
+    mv ~/.zshrc ~/dotfiles/zsh/
+    mv ~/.zprofile ~/dotfiles/zsh/
+    mv ~/.p10k.zsh ~/dotfiles/zsh/
+    mv ~/.gitconfig ~/dotfiles/git/
+    mv ~/.tmux.conf ~/dotfiles/tmux/
+    mv -r ~/.config/nvim/* ~/dotfiles/nvim/.config/nvim/
+    ```
 
-> Replace `yourusername` with your GitHub username.
+    > **Tip:** Backup your configs before moving.
 
-### 3. Stow Your Configurations
+3. **Symlink with Stow**
 
-```bash
-stow zsh
-stow git
-stow tmux
-stow nvim
-```
+    From your dotfiles directory, run:
 
-That's it! Your dotfiles are now symlinked into the appropriate places in your home directory.
+    ```bash
+    cd ~/dotfiles
+    stow zsh
+    stow git
+    stow tmux
+    stow nvim
+    ```
 
-----
-
-
-## ⚙️ Installation
-
-### 1. Install `stow`
-
-#### On macOS (Homebrew)
-```bash
-brew install stow
-```
-
-#### On Debian/Ubuntu
-```bash
-sudo apt update
-sudo apt install stow
-```
+    This will symlink the files back to their original locations.
 
 ---
 
-### 2. Clone This Repository
+## 💻 Setting Up Dotfiles on a New Machine
 
-```bash
-git clone git@github.com:yourusername/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-```
+1. **Install Git and Stow**
 
-> Replace `yourusername` with your actual GitHub username.
+    ```bash
+    # Debian/Ubuntu
+    sudo apt update
+    sudo apt install git stow
+
+    # macOS
+    brew install git stow
+    ```
+
+2. **Clone the Repository**
+
+    ```bash
+    git clone git@github.com:yourusername/dotfiles.git ~/dotfiles
+    cd ~/dotfiles
+    ```
+
+    > Replace `yourusername` with your GitHub username.
+
+3. **Symlink Your Configurations**
+
+    ```bash
+    stow zsh
+    stow git
+    stow tmux
+    stow nvim
+    ```
+
+    Your dotfiles are now active on the new machine.
 
 ---
 
-### 3. Use `stow` to Set Up Symlinks
+## ✏️ Editing Config Files and Committing Changes
 
-Run the following to symlink each configuration set into your `$HOME` directory:
+1. **Edit Your Config Files**
 
-```bash
-stow zsh
-stow git
-stow tmux
-stow nvim
-```
+    Open and edit any config file inside the dotfiles repo. For example:
 
-This will create symbolic links such as:
+    ```bash
+    nvim ~/dotfiles/zsh/.zshrc
+    ```
 
-- `~/.zshrc → ~/dotfiles/zsh/.zshrc`
-- `~/.gitconfig → ~/dotfiles/git/.gitconfig`
+2. **Check the Changes**
+
+    ```bash
+    cd ~/dotfiles
+    git status
+    ```
+
+3. **Stage and Commit**
+
+    ```bash
+    git add zsh/.zshrc
+    git commit -m "Update .zshrc with new aliases"
+    ```
+
+4. **Push to GitHub**
+
+    ```bash
+    git push origin main
+    ```
+
+    > Replace `main` with your branch name if different.
 
 ---
 
