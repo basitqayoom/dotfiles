@@ -144,3 +144,15 @@ zstyle ':completion:*' verbose true
 eval "$(starship init zsh)"
 
 alias cd='z'
+
+
+raisemr() {
+  local source_branch target_branch
+  source_branch=$(git rev-parse --abbrev-ref HEAD)
+  if [ -z "$1" ]; then
+    echo "Usage: raisemr <target-branch>"
+    return 1
+  fi
+  target_branch="$1"
+  glab mr create --source-branch "$source_branch" --target-branch "$target_branch"
+}

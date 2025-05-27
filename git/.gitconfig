@@ -2,3 +2,5 @@
 
 name = "Basit Qayoom"
 email = "basit.qayoom@pw.live"
+[init]
+	defaultBranch = main
